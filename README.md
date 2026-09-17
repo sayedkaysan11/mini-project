@@ -1,31 +1,27 @@
-# Product Information System
+# Mini Project 1 - Product Information System
 
-Mini Project 1 — Pemrograman Web. Sistem informasi produk sederhana berbasis PHP native
-dengan pemisahan tiga lapis arsitektur.
+Tugas Pemrograman Web pertemuan 2. Bikin sistem informasi produk pakai PHP native, dipisah jadi 3 file sesuai arsitektur yang diajarin di kelas (Data Layer, Processing Layer, Presentation Layer).
 
-## Struktur berkas
+## Isi file
 
-| Berkas | Lapisan | Isi |
-| --- | --- | --- |
-| `products.php` | Data Layer | Multidimensional array data komoditas produk (ID, Nama, Kategori, Harga, Stok, Deskripsi) |
-| `functions.php` | Processing Layer | `hitungTotalNilaiStok()` dan logika conditional penanda stok kritis (< 3) |
-| `index.php` | Presentation Layer | Merakit kedua lapisan dengan `require_once`, merender tabel HTML lewat `foreach` |
+- **products.php** - array data produk (id, nama, kategori, harga, stok, deskripsi)
+- **functions.php** - fungsi buat hitung total nilai stok gudang, sama logika kalau stok kurang dari 3 dianggap kritis
+- **index.php** - gabungin dua file di atas terus ditampilkan dalam bentuk tabel HTML
 
-## Cara menjalankan
+## Cara jalanin
 
-Dengan PHP built-in server:
+Pakai XAMPP:
+1. Copy semua file ke folder htdocs, misal `htdocs/mini-project`
+2. Nyalain Apache dari XAMPP Control Panel
+3. Buka browser, ketik `http://localhost/mini-project`
 
-```bash
+Atau kalau udah ada PHP terinstall, langsung aja jalankan:
+```
 php -S localhost:8000
 ```
+terus buka `http://localhost:8000`
 
-Lalu buka `http://localhost:8000` di browser.
+## Catatan
 
-Atau letakkan folder ini di `htdocs` (XAMPP) / `www` (Laragon), lalu buka
-`http://localhost/nama-folder`.
+Baris tabel yang warnanya beda nandain stok yang mau habis (kurang dari 3) sama yang udah habis (0). Total nilai aset gudang dihitung dari harga dikali stok tiap produk, dijumlahin semua.
 
-## Aturan tampilan
-
-- Stok di bawah 3 unit: baris ditandai oranye dengan status "Segera restock".
-- Stok 0: baris ditandai merah dengan status "Habis".
-- Nilai aset gudang dihitung dari penjumlahan `harga x stok` seluruh produk.
